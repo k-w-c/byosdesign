@@ -1,0 +1,10 @@
+# BYOS link redirects: one line per link.
+# Format: /path   destination   302
+# Always use 302 (temporary) so changes take effect for everyone, even people who clicked before.
+# Name links by what they are, never by store, so they still make sense if the store changes.
+
+/go/tote-rack-materials   https://www.homedepot.com/list/view/details/shared/3adc1c80-ba80-11f1-b5f7-e317a781dda0   302
+
+# Fallback: any unknown or retired /go/ link lands on the homepage instead of a 404.
+# Keep this line LAST; the first matching line wins.
+/go/*   /   302
