@@ -6,6 +6,9 @@
 
 /go/tote-rack-materials   https://thehomedepotcreator.sjv.io/2R9bKA   302
 
+# Shared across all plans (not project-specific)
+/go/tools   https://thehomedepotcreator.sjv.io/rEokO5   302
+
 # Fallback: any unknown or retired /go/ link lands on the homepage instead of a 404.
 # Keep this line LAST; the first matching line wins.
 /go/*   /   302
