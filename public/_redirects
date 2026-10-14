@@ -4,6 +4,8 @@
 # Name links by what they are, never by store, so they still make sense if the store changes.
 # Affiliate links (Home Depot Creator / Impact sjv.io) go here directly; they forward on to the product or list.
 
+# Gumroad checkout (?wanted=true skips the product page and opens checkout)
+/go/tote-rack             https://byos.gumroad.com/l/thetoterack?wanted=true   302
 /go/tote-rack-materials   https://thehomedepotcreator.sjv.io/2R9bKA   302
 
 # Shared across all plans (not project-specific)
