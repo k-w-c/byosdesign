@@ -1,0 +1,134 @@
+<!--
+  BYOS · Gumroad profile landing page (replaces byos.gumroad.com).
+  Publish:  gumroad pages preview gumroad/profile.html
+            gumroad pages push profile gumroad/profile.html
+  Rules: no checkout here; link to product pages. Email form uses Gumroad's
+  data-gumroad-follow tags. Images are served from byosdesign.com/images/.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  .byos, .byos * { box-sizing: border-box; }
+  .byos {
+    --paper: #f4f2ed; --ink: #1a1917; --muted: #6f6c66; --rule: rgba(26,25,23,.16);
+    --card: #ffffff; --accent: #2e3a23; --on-accent: #f4f2ed;
+    background: var(--paper); color: var(--ink);
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    min-height: 100vh; margin: 0; padding: 44px 16px 30px;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-color-scheme: dark) {
+    .byos {
+      --paper: #1c2416; --ink: #ede6d3; --muted: #a89a6a; --rule: rgba(237,230,211,.18);
+      --card: #1c2416; --accent: #d4a12a; --on-accent: #1c2416;
+    }
+    /* line drawings are dark-on-light; flip them and blend into the page */
+    .byos .drawing { filter: invert(1) hue-rotate(180deg); mix-blend-mode: lighten; }
+  }
+  .byos .wrap { max-width: 520px; margin: 0 auto; }
+  .byos p { margin: 0; }
+  .byos a { color: inherit; }
+
+  .byos .mark { font-family: 'Permanent Marker', cursive; font-size: clamp(38px, 11vw, 48px); line-height: 1; letter-spacing: 2px; }
+  .byos .strike { position: relative; display: inline-block; }
+  .byos .strike::after { content: ""; position: absolute; left: -4px; right: -6px; top: 52%; height: 4px; background: currentColor; transform: rotate(-8deg); }
+
+  .byos h1 { font-weight: 400; font-size: clamp(19px, 5.4vw, 22px); line-height: 1.5; margin: 30px 0 0; }
+  .byos .slot { font-family: 'Permanent Marker', cursive; font-size: 1.35em; display: inline-block; min-width: 132px; transition: opacity .22s ease; }
+  .byos .slot.out { opacity: 0; }
+  .byos .lede { font-size: 14px; margin-top: 22px; line-height: 1.7; }
+  .byos .sub { font-size: 13px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+
+  .byos .tile { display: block; margin-top: 34px; text-decoration: none; border-top: .5px solid var(--rule); border-bottom: .5px solid var(--rule); padding-top: 20px; }
+  .byos .tile + .tile { margin-top: 0; border-top: none; }
+  .byos .tile img { display: block; width: 100%; height: auto; }
+  .byos .cap { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 11.5px; color: var(--muted); letter-spacing: .4px; padding: 8px 0 12px; }
+  .byos .status { font-family: 'Permanent Marker', cursive; font-size: 15px; color: var(--ink); }
+  .byos a.tile .status { border-bottom: 1.5px solid currentColor; }
+  .byos a.tile:hover .status { border-bottom-width: 2.5px; }
+  .byos a.tile:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+
+  .byos .ask { font-size: 14px; margin-top: 32px; line-height: 1.6; }
+  .byos form { display: flex; gap: 8px; margin-top: 14px; }
+  .byos input[type=email] {
+    flex: 1; min-width: 0; font-family: inherit; font-size: 16px; color: var(--ink);
+    background: transparent; border: none; border-bottom: 1.5px solid var(--ink);
+    padding: 8px 2px; border-radius: 0; -webkit-appearance: none;
+  }
+  .byos input[type=email]:focus { outline: none; border-bottom-width: 2.5px; }
+  .byos input::placeholder { color: var(--muted); }
+  .byos button {
+    font-family: 'Permanent Marker', cursive; font-size: 16px; letter-spacing: .5px;
+    color: var(--on-accent); background: var(--accent); border: none; border-radius: 2px;
+    padding: 10px 18px; min-height: 44px; cursor: pointer; white-space: nowrap;
+  }
+  .byos button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .byos .msg { font-size: 13px; margin-top: 10px; color: var(--muted); min-height: 1.6em; }
+  .byos .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .byos footer { display: flex; justify-content: flex-end; font-size: 11.5px; color: var(--muted); border-top: .5px solid var(--rule); margin-top: 42px; padding-top: 12px; }
+  .byos footer a { color: var(--muted); text-decoration: none; border-bottom: .5px solid var(--rule); }
+</style>
+
+<div class="byos">
+  <div class="wrap">
+
+    <div class="mark">BYO<span class="strike">S</span></div>
+
+    <h1>build your own <span class="slot" id="byos-slot">storage</span></h1>
+
+    <p class="lede">Simple plans for projects you can build in a weekend.</p>
+    <p class="sub">Plans, cut list, and a material list that you can take to Home Depot.</p>
+
+    <a class="tile" href="https://byos.gumroad.com/l/thetoterack">
+      <img class="drawing" src="https://byosdesign.com/images/tote-rack-drawing.webp" width="1600" height="860" alt="Line drawing of the tote rack: a timber frame of uprights and rails with a bench and shelves.">
+      <span class="cap"><span>01 &middot; the tote rack</span><span class="status">get the plans &rarr;</span></span>
+    </a>
+
+    <div class="tile">
+      <img class="drawing" src="https://byosdesign.com/images/hut-drawing.webp" width="1600" height="860" loading="lazy" alt="Line drawing of the hut: a timber-framed cabin with a single-slope roof on exposed rafters.">
+      <span class="cap"><span>02 &middot; the hut</span><span class="status">plans coming</span></span>
+    </div>
+
+    <p class="ask">The hut is next. Drop your email and I'll let you know when its plans are ready.</p>
+
+    <form data-gumroad-follow>
+      <label class="vh" for="byos-email">Email</label>
+      <input id="byos-email" type="email" name="email" placeholder="you@somewhere.com" autocomplete="email" autocapitalize="off" spellcheck="false" inputmode="email" required>
+      <button type="submit">Sign up</button>
+    </form>
+    <p class="msg" data-gumroad-follow-message aria-live="polite"></p>
+
+    <footer>
+      <a href="https://www.instagram.com/kit_christopher/" target="_blank" rel="noopener">@kit_christopher</a>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  /* Rotating headline. If Gumroad strips scripts, "storage" simply stays put. */
+  var words = [
+    { text: "storage" }, { text: "space" }, { text: "hut" }, { text: "sauna" },
+    { text: "shed" }, { text: "shelter" }, { text: "S***", hold: 950 }
+  ];
+  var DEFAULT_HOLD = 1900, FADE = 240;
+  var el = document.getElementById("byos-slot");
+  if (!el) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var i = 0;
+  (function cycle() {
+    setTimeout(function () {
+      el.classList.add("out");
+      setTimeout(function () {
+        i = (i + 1) % words.length;
+        el.textContent = words[i].text;
+        el.classList.remove("out");
+        cycle();
+      }, FADE);
+    }, words[i].hold || DEFAULT_HOLD);
+  })();
+})();
+</script>
