@@ -5,8 +5,6 @@
   Rules: no checkout here; link to product pages. Email form uses Gumroad's
   data-gumroad-follow tags. Images are served from byosdesign.com/images/.
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   .byos, .byos * { box-sizing: border-box; }
@@ -95,7 +93,7 @@
 
     <form data-gumroad-follow>
       <label class="vh" for="byos-email">Email</label>
-      <input id="byos-email" type="email" name="email" placeholder="you@somewhere.com" autocomplete="email" autocapitalize="off" spellcheck="false" inputmode="email" required>
+      <input id="byos-email" type="email" name="email" placeholder="you@somewhere.com" autocomplete="email" spellcheck="false" required>
       <button type="submit">Sign up</button>
     </form>
     <p class="msg" data-gumroad-follow-message aria-live="polite"></p>
