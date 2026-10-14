@@ -1,0 +1,155 @@
+<!--
+  BYOS · custom product page template (one file per product: copy this, swap the
+  PER-PRODUCT block). Name, price and description come live from the Gumroad
+  product, so edit those in Gumroad, not here.
+  Images must be Gumroad media-library URLs (the page only allows Gumroad's CDN).
+  Publish:  gumroad products page preview <id> gumroad/<product>.html
+            gumroad products page publish <id> gumroad/<product>.html
+-->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  .bp, .bp * { box-sizing: border-box; }
+  .bp {
+    --paper: #f4f2ed; --ink: #1a1917; --muted: #6f6c66; --rule: rgba(26,25,23,.16);
+    --panel: #ffffff; --accent: #1a1917; --on-accent: #f4f2ed;
+    background: var(--paper); color: var(--ink);
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased;
+    padding: 0 16px 120px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .bp {
+      --paper: #1a1917; --ink: #ede6d3; --muted: #a89a6a; --rule: rgba(237,230,211,.16);
+      --panel: #1a1917; --accent: #d4a12a; --on-accent: #1a1917;
+    }
+    .bp .drawing { filter: invert(1) hue-rotate(180deg); mix-blend-mode: lighten; }
+  }
+  .bp .wrap { max-width: 1040px; margin: 0 auto; }
+  .bp a { color: inherit; }
+  .bp p { margin: 0; }
+
+  .bp .top { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: .5px solid var(--rule); }
+  .bp .mark { font-family: 'Permanent Marker', cursive; font-size: 28px; line-height: 1; letter-spacing: 1.5px; text-decoration: none; }
+  .bp .strike { position: relative; display: inline-block; }
+  .bp .strike::after { content: ""; position: absolute; left: -3px; right: -5px; top: 52%; height: 3px; background: currentColor; transform: rotate(-8deg); }
+  .bp .back { font-size: 12px; color: var(--muted); text-decoration: none; border-bottom: .5px solid var(--rule); }
+
+  .bp .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; align-items: center; padding: 36px 0 40px; border-bottom: .5px solid var(--rule); }
+  .bp .hero img { display: block; width: 100%; height: auto; }
+  .bp .num { font-size: 11.5px; color: var(--muted); letter-spacing: .4px; }
+  .bp h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; margin: 8px 0 0; }
+  .bp .tag { font-size: 15px; margin-top: 16px; line-height: 1.6; }
+  .bp .facts { list-style: none; padding: 0; margin: 22px 0 0; font-size: 12.5px; color: var(--muted); border-top: .5px solid var(--rule); }
+  .bp .facts li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: .5px solid var(--rule); }
+  .bp .facts b { font-weight: 500; color: var(--ink); }
+  .bp .buyrow { display: flex; align-items: center; gap: 16px; margin-top: 26px; }
+  .bp .price { font-size: 22px; font-weight: 500; }
+  .bp .buy {
+    display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px;
+    font-family: 'Permanent Marker', cursive; font-size: 18px; letter-spacing: .5px; text-decoration: none;
+    color: var(--on-accent); background: var(--accent); border-radius: 2px;
+  }
+  .bp .buy:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .bp .fine { font-size: 11.5px; color: var(--muted); margin-top: 10px; }
+
+  .bp .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 32px 0; border-bottom: .5px solid var(--rule); }
+  .bp .gallery img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--panel); }
+
+  .bp .body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; padding: 36px 0; border-bottom: .5px solid var(--rule); }
+  .bp h2 { font-size: 11.5px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .bp .desc { font-size: 14px; line-height: 1.75; }
+  .bp .desc h3, .bp .desc h4 { font-size: 15px; font-weight: 500; margin: 26px 0 8px; }
+  .bp .desc p { margin: 0 0 14px; }
+  .bp .desc ul, .bp .desc ol { margin: 0 0 14px; padding-left: 20px; }
+  .bp .sheets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .bp .sheets img { display: block; width: 100%; aspect-ratio: 8.5 / 11; object-fit: cover; object-position: top; background: #fff; border: .5px solid var(--rule); }
+  .bp .sheets p { grid-column: 1 / -1; font-size: 11.5px; color: var(--muted); }
+
+  .bp .end { text-align: center; padding: 44px 0 0; }
+  .bp .end .tag { margin: 0 0 18px; }
+  .bp footer { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); margin-top: 48px; padding-top: 12px; border-top: .5px solid var(--rule); }
+  .bp footer a { color: var(--muted); text-decoration: none; border-bottom: .5px solid var(--rule); }
+
+  /* phone: one column, buy bar pinned to the bottom */
+  .bp .bar { display: none; }
+  @media (max-width: 720px) {
+    .bp .hero, .bp .body { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .bp .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bp .bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px 18px;
+      background: var(--paper); border-top: .5px solid var(--rule);
+    }
+    .bp .bar .buy { flex: 1; }
+  }
+</style>
+
+<div class="bp">
+  <div class="wrap">
+
+    <div class="top">
+      <a class="mark" href="https://byos.gumroad.com" aria-label="BYOS home">BYO<span class="strike">S</span></a>
+      <a class="back" href="https://byos.gumroad.com">all plans</a>
+    </div>
+
+    <!-- ===== PER-PRODUCT: hero, facts, gallery, sheet previews ===== -->
+    <section class="hero">
+      <img class="drawing" src="[IMG_HERO]" width="1600" height="860" alt="Line drawing of the tote rack: a timber frame of uprights and rails with a bench and shelves.">
+      <div>
+        <p class="num">01 &middot; plans</p>
+        <h1 data-gumroad-field="name">The tote rack</h1>
+        <p class="tag">Build it in a day. Store your gear. Feel awesome.</p>
+        <ul class="facts">
+          <li><span>Holds</span><b>26 totes (27 gal HDX)</b></li>
+          <li><span>Plus</span><b>4 shelves + a bench</b></li>
+          <li><span>Plans</span><b>9 sheets, 8.5 &times; 11</b></li>
+          <li><span>Lumber</span><b>Home Depot, straight cuts only</b></li>
+        </ul>
+        <div class="buyrow">
+          <span class="price" data-gumroad-field="price">$[PRICE]</span>
+          <a class="buy" href="#" data-gumroad-action="buy">get the plans</a>
+        </div>
+        <p class="fine">Instant PDF download &middot; 7-day refund</p>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="Photos">
+      <img src="[IMG_PHOTO_1]" alt="[The built tote rack in the garage]">
+      <img src="[IMG_PHOTO_2]" alt="[Totes loaded on the rails]">
+      <img src="[IMG_PHOTO_3]" alt="[Shelves and bench detail]">
+    </section>
+
+    <section class="body">
+      <div>
+        <h2>About</h2>
+        <div class="desc" data-gumroad-field="description">
+          <p>[Description from Gumroad renders here.]</p>
+        </div>
+      </div>
+      <div>
+        <h2>Inside the plans</h2>
+        <div class="sheets">
+          <img src="[IMG_SHEET_1]" alt="Preview of the front sheet">
+          <img src="[IMG_SHEET_2]" alt="Preview of a cut list sheet">
+          <p>Print at home in black and white.</p>
+        </div>
+      </div>
+    </section>
+    <!-- ===== end PER-PRODUCT ===== -->
+
+    <section class="end">
+      <p class="tag">Ready when you are.</p>
+      <a class="buy" href="#" data-gumroad-action="buy">get the plans</a>
+    </section>
+
+    <footer>
+      <a href="https://byos.gumroad.com">byos</a>
+      <a href="https://www.instagram.com/kit_christopher/" target="_blank" rel="noopener">@kit_christopher</a>
+    </footer>
+  </div>
+
+  <div class="bar">
+    <span class="price" data-gumroad-field="price">$[PRICE]</span>
+    <a class="buy" href="#" data-gumroad-action="buy">get the plans</a>
+  </div>
+</div>

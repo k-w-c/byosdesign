@@ -18,8 +18,9 @@
   }
   @media (prefers-color-scheme: dark) {
     .byos {
-      --paper: #1c2416; --ink: #ede6d3; --muted: #a89a6a; --rule: rgba(237,230,211,.18);
-      --card: #1c2416; --accent: #d4a12a; --on-accent: #1c2416;
+      /* charcoal: warm near-black (the site's ink color), canvas text, ochre accent */
+      --paper: #1a1917; --ink: #ede6d3; --muted: #a89a6a; --rule: rgba(237,230,211,.16);
+      --card: #1a1917; --accent: #d4a12a; --on-accent: #1a1917;
     }
     /* line drawings are dark-on-light; flip them and blend into the page */
     .byos .drawing { filter: invert(1) hue-rotate(180deg); mix-blend-mode: lighten; }
