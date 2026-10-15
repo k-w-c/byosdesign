@@ -1,7 +1,10 @@
 # BYOS brand
 
-## Logo
-Wordmark "BYOS" set in Permanent Marker with the S crossed out, outlined (no font needed). Geometry matches the mark on byosdesign.com exactly.
+The BYOS design system in Claude is the single source of truth for the brand: voice, colors, type, spacing, components, and the instruction-sheet style. Look there first, and change it there first:
+
+https://claude.ai/artifact/L8bQU4YW2hgS8WiZYea6Vv
+
+This folder only holds the logo source files the site and other tools pull from. The same files are in the design system's Logos group.
 
 | File | Use |
 |---|---|
@@ -10,22 +13,4 @@ Wordmark "BYOS" set in Permanent Marker with the S crossed out, outlined (no fon
 | `logo/byos-avatar-light-1000.png` / `.svg` | Square avatar/profile image, light |
 | `logo/byos-avatar-dark-1000.png` / `.svg` | Square avatar/profile image, dark |
 
-## Colors
-| Name | Hex | Role |
-|---|---|---|
-| Off-white | `#F4F2ED` | Light background |
-| Charcoal | `#1A1917` | Text on light; dark background |
-| Canvas light | `#EDE6D3` | Text on dark |
-| Ranger khaki | `#A89A6A` | Secondary text on dark |
-| Ochre | `#D4A12A` | Accent: buttons, highlights |
-| Olive green | `#2E3A23` | Accent only |
-| Shadow green | `#1C2416` | Accent only |
-
-Rule: green is an accent, never a full background. Dark backgrounds are charcoal.
-
-Rule: ochre is for fills, lines and stars, never for text on a light background (2.1:1 contrast on off-white). Text on an ochre fill is charcoal (7.5:1), never off-white.
-On byosdesign.com: "get the plans" is charcoal text with an ochre underline; the Sign up button is ochre with charcoal text.
-
-## Type
-Permanent Marker (wordmark, display), JetBrains Mono (body on web).
-Instruction sheets: black and white only (home printers).
+The wordmark is Permanent Marker with the S crossed out, outlined so no font is needed. Its geometry matches the live mark on byosdesign.com exactly. If the logo changes, regenerate these files and upload them to the design system in the same pass.
