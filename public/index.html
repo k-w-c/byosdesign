@@ -24,7 +24,7 @@ html, body { background:#f4f2ed; margin:0; }
 
 .byos, .byos * { box-sizing:border-box; }
 .byos {
-  --ink:#1a1917; --paper:#f4f2ed; --muted:#84817a; --rule:rgba(26,25,23,.16); --star:#d4a12a;
+  --ink:#1a1917; --paper:#f4f2ed; --muted:#84817a; --rule:rgba(26,25,23,.16); --ochre:#d4a12a; /* ochre = fills, lines, stars only; never text on light */
   font-family:'JetBrains Mono', ui-monospace, monospace;
   color:var(--ink);
   max-width:460px; margin:0 auto; padding:44px 22px 30px;
@@ -59,12 +59,12 @@ html, body { background:#f4f2ed; margin:0; }
 .byos .status .arr { font-family:'JetBrains Mono',ui-monospace,monospace; font-size:13px; margin-left:4px; }
 .byos .desc { font-size:13px; line-height:1.55; margin-top:6px; }
 .byos .proof { font-size:11.5px; color:var(--muted); letter-spacing:.2px; margin-top:4px; }
-.byos .stars { color:var(--star); letter-spacing:1px; margin-right:6px; }
+.byos .stars { color:var(--ochre); letter-spacing:1px; margin-right:6px; }
 .byos .stars .off { color:var(--rule); }
 /* purchasable tile: the whole figure is the link, opens Gumroad in a new tab */
 .byos a.buy { display:block; color:inherit; text-decoration:none; }
-.byos a.buy .status .lbl { border-bottom:1.5px solid var(--ink); }
-.byos a.buy:hover .status .lbl { border-bottom-width:2.5px; }
+.byos a.buy .status .lbl { border-bottom:3px solid var(--ochre); }
+.byos a.buy:hover .status .lbl { border-bottom-width:4.5px; }
 .byos a.buy:focus-visible { outline:2px solid var(--ink); outline-offset:4px; }
 
 .byos .ask { font-size:14px; margin-top:32px; line-height:1.6; }
@@ -78,7 +78,7 @@ html, body { background:#f4f2ed; margin:0; }
 .byos input::placeholder { color:var(--muted); }
 .byos button {
   font-family:'Permanent Marker',cursive; font-size:16px; letter-spacing:.5px;
-  color:var(--paper); background:var(--ink); border:none; border-radius:2px;
+  color:var(--ink); background:var(--ochre); border:none; border-radius:2px;
   padding:9px 17px; cursor:pointer; white-space:nowrap;
 }
 .byos button:active { transform:translateY(1px); }

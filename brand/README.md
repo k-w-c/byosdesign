@@ -23,6 +23,9 @@ Wordmark "BYOS" set in Permanent Marker with the S crossed out, outlined (no fon
 
 Rule: green is an accent, never a full background. Dark backgrounds are charcoal.
 
+Rule: ochre is for fills, lines and stars, never for text on a light background (2.1:1 contrast on off-white). Text on an ochre fill is charcoal (7.5:1), never off-white.
+On byosdesign.com: "get the plans" is charcoal text with an ochre underline; the Sign up button is ochre with charcoal text.
+
 ## Type
 Permanent Marker (wordmark, display), JetBrains Mono (body on web).
 Instruction sheets: black and white only (home printers).
