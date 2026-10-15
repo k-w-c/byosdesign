@@ -1,7 +1,7 @@
 # BYOS brand
 
 ## Logo
-Wordmark "BYOS" set in Permanent Marker, outlined (no font needed). No strike-through on the S.
+Wordmark "BYOS" set in Permanent Marker with the S crossed out, outlined (no font needed). Geometry matches the mark on byosdesign.com exactly.
 
 | File | Use |
 |---|---|

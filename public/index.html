@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BYOS — build your own</title>
-<meta name="description" content="Simple plans for projects you can build in a weekend.">
+<meta name="description" content="Simple plans for useful things you can build in a weekend.">
 <meta property="og:title" content="BYOS — build your own">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://byosdesign.com/og.png">
@@ -14,7 +14,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:description" content="Simple plans for projects you can build in a weekend.">
+<meta property="og:description" content="Simple plans for useful things you can build in a weekend.">
 <meta property="og:url" content="https://byosdesign.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,7 @@ html, body { background:#f4f2ed; margin:0; }
 /* stacked tiles share one rule instead of doubling up */
 .byos figure + figure { border-top:none; margin-top:0; }
 /* Square tile image = the product's Gumroad thumbnail. multiply turns its white background into the page color. */
-.byos figure img { display:block; width:100%; max-width:400px; height:auto; aspect-ratio:1/1; margin:0 auto; mix-blend-mode:multiply; }
+.byos figure img { display:block; width:100%; max-width:400px; height:auto; aspect-ratio:1/1; margin:0 auto; object-fit:contain; mix-blend-mode:multiply; }
 .byos figcaption { padding:10px 0 16px; }
 .byos .row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
 .byos .name { font-size:11.5px; color:var(--muted); letter-spacing:.4px; }
@@ -99,24 +99,17 @@ html, body { background:#f4f2ed; margin:0; }
 
   <h1>build your own <span class="slot" id="byos-slot">storage</span></h1>
 
-  <p class="lede">Simple plans for projects you can build in a weekend.</p>
-  <p class="sub">Plans, cut list, and a material list that you can take to Home Depot.</p>
+  <p class="lede">Simple plans for useful things you can build in a weekend.</p>
 
-  <p class="ask">The hut is next. Drop your email and I'll let you know when its plans are ready.</p>
-
-  <form action="https://app.kit.com/forms/9882113/subscriptions" method="post">
-    <input type="email" name="email_address" placeholder="you@somewhere.com" autocomplete="email" autocapitalize="off" spellcheck="false" inputmode="email" required>
-    <button type="submit">Sign up</button>
-  </form>
-
-  <!-- Tile image and the numbers in data-sync spans come from Gumroad. Hand-written: name, description. -->
+  <!-- Plan tiles. Parts tagged data-gumroad (image, proof line) refresh daily from Gumroad via scripts/sync_gumroad.py.
+       Hand-written: link, name, description, alt text. Add a plan by copying a tile and changing the slug. -->
   <figure>
     <a class="buy" href="/go/tote-rack" target="_blank" rel="noopener" aria-label="Get the tote rack plans on Gumroad (opens in a new tab)">
-      <img src="/images/tote-rack-thumb.webp" width="600" height="600" alt="Line drawing of the tote rack, 130½ inches wide, 89 inches tall, 30 inches deep.">
+      <img src="/images/thetoterack-thumb.png?v=68cf0f84" data-gumroad-thumb="thetoterack" width="600" height="600" alt="Line drawing of the tote rack, 130½ inches wide, 89 inches tall, 30 inches deep.">
       <figcaption>
-        <div class="row"><span class="name">01 &middot; the tote rack</span><span class="status"><span class="lbl">get the plans</span><span class="arr">&#8599;</span></span></div>
+        <div class="row"><span class="name">the tote rack</span><span class="status"><span class="lbl">get the plans</span><span class="arr">&#8599;</span></span></div>
         <p class="desc">Holds 22 totes, four shelves and a bench.</p>
-        <p class="proof"><span class="stars" data-sync="thetoterack:stars" aria-label="Rated 5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span data-sync="thetoterack:reviews">2 reviews</span> &middot; <span data-sync="thetoterack:sales">79 sold</span> on Gumroad</p>
+        <p class="proof" data-gumroad="thetoterack"><span class="stars" aria-label="Rated 5.0 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>2 reviews &middot; 79 sold on Gumroad</p>
       </figcaption>
     </a>
   </figure>
@@ -124,10 +117,17 @@ html, body { background:#f4f2ed; margin:0; }
   <figure>
     <img src="/images/hut-thumb.webp" width="1200" height="1200" loading="lazy" alt="Line drawing of the hut: a timber-framed cabin with a single-slope roof on exposed rafters.">
     <figcaption>
-      <div class="row"><span class="name">02 &middot; the hut</span><span class="status">plans coming</span></div>
+      <div class="row"><span class="name">the hut</span><span class="status">plans coming</span></div>
       <p class="desc">A sleeping hut, one step up from a tent.</p>
     </figcaption>
   </figure>
+
+  <p class="ask">Drop your email and I'll let you know when new plans are ready.</p>
+
+  <form action="https://app.kit.com/forms/9882113/subscriptions" method="post">
+    <input type="email" name="email_address" placeholder="you@somewhere.com" autocomplete="email" autocapitalize="off" spellcheck="false" inputmode="email" required>
+    <button type="submit">Sign up</button>
+  </form>
 
   <footer>
     <a href="https://www.instagram.com/kit_christopher/" target="_blank" rel="noopener">@kit_christopher</a>

@@ -1,0 +1,46 @@
+# Refreshes the homepage plan tiles (thumbnail, stars, reviews, sales) from Gumroad.
+# Runs every morning, and any time from GitHub: Actions tab > Sync Gumroad > Run workflow.
+# Commits only when something changed; Cloudflare then redeploys byosdesign.com on its own.
+name: Sync Gumroad
+
+on:
+  schedule:
+    - cron: "17 14 * * *" # 14:17 UTC = 7:17 am Pacific in summer, 6:17 am in winter
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-gumroad
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull tile data from Gumroad
+        id: sync
+        continue-on-error: true # still publish the products that did work
+        run: python3 scripts/sync_gumroad.py
+
+      - name: Publish if anything changed
+        run: |
+          git add -A public
+          if git diff --cached --quiet; then
+            echo "Nothing changed on Gumroad since the last run."
+            exit 0
+          fi
+          git config user.name "byos-sync"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync plan tiles from Gumroad"
+          git push
+
+      - name: Flag a failed product
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "At least one product could not be read from Gumroad. Its tile kept its last values. See the log above."
+          exit 1
